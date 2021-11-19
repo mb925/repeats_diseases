@@ -21,7 +21,7 @@ def how_many(elements):
 def table_count():
     df_uniprots = pd.read_csv(cfg.data['trp_diseases'] + '/uniprot_type_disease.tsv', sep='\t')
     df_repeats = pd.read_csv(cfg.data['trp_diseases'] + '/repeatsdb_type_disease.tsv', sep='\t')
-    # todo df_trp_dis = df_repeats[[df_repeats['Involvement in disease'].notna()]]
+    df_trp_dis = df_repeats[df_repeats['Involvement in disease'].notna()]
 
 
     # TRP
@@ -47,25 +47,30 @@ def table_count():
 
     # TRP & DISEASE
     # filter
-    # filter
-    # todo
-    # pdb_trp_dis = df_repeats['Cross-reference (PDB)'].tolist()
-    # pdb_human_trp_dis = df_repeats.loc[(df_repeats.Organism == 'Homo sapiens (Human)')]['Cross-reference (PDB)'].tolist()
-    # # count
-    # pdb_trp_dis = how_many(df_pdb_trp)
-    # pdb_human_trp_dis = how_many(df_pdb_trp_human)
-    # uniprot_trp_dis = len(df_repeats['Entry'].index)
-    # uniprot_human_trp_dis = len(df_repeats.loc[(df_repeats.Organism == 'Homo sapiens (Human)')]['Entry'].index)
 
+    pdb_trp_dis = df_trp_dis['Cross-reference (PDB)'].tolist()
+    pdb_human_trp_dis = df_trp_dis.loc[(df_repeats.Organism == 'Homo sapiens (Human)')]['Cross-reference (PDB)'].tolist()
+    # count
+    pdb_trp_dis = how_many(pdb_trp_dis)
+    pdb_human_trp_dis = how_many(pdb_human_trp_dis)
+    uniprot_trp_dis = len(df_trp_dis['Entry'].index)
+    uniprot_human_trp_dis = len(df_trp_dis.loc[(df_trp_dis.Organism == 'Homo sapiens (Human)')]['Entry'].index)
 
+    # DISEASE & NON TRP
+
+    pdb_trp_ndis = pdb_disease - pdb_trp_dis
+    pdb_human_trp_ndis = pdb_human_disease - pdb_human_trp_dis
+    uniprot_trp_ndis = uniprot_disease - uniprot_trp_dis
+    uniprot_human_trp_ndis = uniprot_human_disease - uniprot_human_trp_dis
     rows = [(pdb_trp, pdb_human_trp, uniprot_trp, uniprot_human_trp),
             (pdb_disease, pdb_human_disease, uniprot_disease, uniprot_human_disease),
-            (pdb_trp_dis, pdb_human_trp_dis, uniprot_trp_dis, uniprot_human_trp_dis)]
-    df_count_disease = pd.DataFrame(rows, columns=['PDB', 'PDB Human', 'UniProt', 'UniProt Human'], index=['TRP', 'disease', 'TRP & disease'])
+            (pdb_trp_dis, pdb_human_trp_dis, uniprot_trp_dis, uniprot_human_trp_dis),
+            (pdb_trp_ndis, pdb_human_trp_ndis, uniprot_trp_ndis, uniprot_human_trp_ndis)]
+    df_count_disease = pd.DataFrame(rows, columns=['PDB', 'PDB Human', 'UniProt', 'UniProt Human'], index=['TRP', 'disease', 'disease & TRP ', 'disease non TRP'])
     print(df_count_disease)
 
-
-    # df_repeats.to_csv(cfg.data['trp_diseases'] + '/count_disease.tsv', sep='\t', index=False)
+    # todo save the row index
+    df_count_disease.to_csv(cfg.data['trp_diseases'] + '/count_disease.tsv', sep='\t', index=False)
 
 
 if __name__ == '__main__':
