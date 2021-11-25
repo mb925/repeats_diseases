@@ -5,5 +5,6 @@ absolute = absolute + '/../'
 
 data = {
     "trp_diseases": absolute + 'data/trp_diseases',
-    "figures": absolute + 'data/figures'
+    "figures": absolute + 'data/figures',
+    "backup": absolute + 'data/backup'
 }
