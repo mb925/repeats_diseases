@@ -116,7 +116,7 @@ def table_count():
     trp_iii_v = how_many_merge_classes(trp_iii_classes, trp_v_classes)
     trp_iv_v = how_many_merge_classes(trp_iv_classes, trp_v_classes)
 
-    w, h = 11, 11
+    w, h = 15, 15
     matrix = [[0 for x in range(w)] for y in range(h)]
     # PDB all
     matrix[0][0] = pdb_all # PDB all
@@ -130,6 +130,10 @@ def table_count():
     matrix[0][8] = trp_iv_pdb_all # TRP IV
     matrix[0][9] = trp_v_pdb_all # TRP V
     matrix[0][10] = 0 # TRP PDB
+    matrix[0][11] = 0 # TRP II PDB
+    matrix[0][12] = 0 # TRP III PDB
+    matrix[0][13] = 0 # TRP IV PDB
+    matrix[0][14] = 0 # TRP V PDB
 
     # PDB Human
     matrix[1][1] = 0 # PDB Human
@@ -142,6 +146,11 @@ def table_count():
     matrix[1][8] = trp_iv_pdb_human # TRP IV
     matrix[1][9] = trp_v_pdb_human # TRP V
     matrix[1][10] = 0 # TRP PDB
+    matrix[1][11] = 0 # TRP II PDB
+    matrix[1][12] = 0 # TRP III PDB
+    matrix[1][13] = 0 # TRP IV PDB
+    matrix[1][14] = 0 # TRP V PDB
+
     # UniProt all
     matrix[2][2] = uniprot_all # UniProt all
     matrix[2][3] = uniprot_human # 'UniProt Human'
@@ -150,25 +159,40 @@ def table_count():
     matrix[2][6] = trp_ii_all # TRP II
     matrix[2][7] = trp_iii_all # TRP III
     matrix[2][8] = trp_iv_all # TRP IV
-    matrix[2][9] = trp_v_all
+    matrix[2][9] = trp_v_all # TRP V
     matrix[2][10] = 0 # TRP PDB
+    matrix[2][11] = 0 # TRP II PDB
+    matrix[2][12] = 0 # TRP III PDB
+    matrix[2][13] = 0 # TRP IV PDB
+    matrix[2][14] = 0 # TRP V PDB
+
     # 'UniProt Human'
     matrix[3][3] = uniprot_human # 'UniProt Human'
     matrix[3][4] = uniprot_human_trp # TRP UniProt
     matrix[3][5] = uniprot_disease_human # OMIM UniProt
     matrix[3][6] = trp_ii_human # TRP II
-    matrix[3][7] = trp_iii_human
-    matrix[3][8] = trp_v_human
-    matrix[3][9] = trp_v_human
+    matrix[3][7] = trp_iii_human # TRP III
+    matrix[3][8] = trp_v_human # TRP IV
+    matrix[3][9] = trp_v_human # TRP V
     matrix[3][10] = 0 # TRP PDB
+    matrix[3][11] = 0 # TRP II PDB
+    matrix[3][12] = 0 # TRP III PDB
+    matrix[3][13] = 0 # TRP IV PDB
+    matrix[3][14] = 0 # TRP V PDB
+
     # TRP UniProt
     matrix[4][4] = uniprot_trp # TRP UniProt
-    matrix[4][5] = uniprot_trp_dis
-    matrix[4][6] = trp_ii_all
+    matrix[4][5] = uniprot_trp_dis # OMIM UniProt
+    matrix[4][6] = trp_ii_all # TRP II
     matrix[4][7] = trp_iii_all
     matrix[4][8] = trp_iv_all
     matrix[4][9] = trp_v_all
     matrix[4][10] = 0 # TRP PDB
+    matrix[4][11] = 0 # TRP II PDB
+    matrix[4][12] = 0 # TRP III PDB
+    matrix[4][13] = 0 # TRP IV PDB
+    matrix[4][14] = 0 # TRP V PDB
+
     # OMIM UniProt
     matrix[5][5] = 0
     matrix[5][6] = trp_ii_omim
@@ -176,34 +200,79 @@ def table_count():
     matrix[5][8] = trp_iv_omim
     matrix[5][9] = trp_v_omim
     matrix[5][10] = 0 # TRP PDB
+    matrix[5][11] = 0 # TRP II PDB
+    matrix[5][12] = 0 # TRP III PDB
+    matrix[5][13] = 0 # TRP IV PDB
+    matrix[5][14] = 0 # TRP V PDB
     # TRP II
     matrix[6][6] = trp_ii_all
     matrix[6][7] = trp_ii_iii
     matrix[6][8] = trp_ii_iv
     matrix[6][9] = trp_ii_v
     matrix[6][10] = 0  # TRP PDB
+    matrix[6][11] = 0  # TRP II PDB
+    matrix[6][12] = 0  # TRP III PDB
+    matrix[6][13] = 0  # TRP IV PDB
+    matrix[6][14] = 0  # TRP V PDB
+
     # TRP III
     matrix[7][7] = trp_iii_all
     matrix[7][8] = trp_iii_iv
     matrix[7][9] = trp_iii_v
     matrix[7][10] = 0  # TRP PDB
+    matrix[7][11] = 0  # TRP II PDB
+    matrix[7][12] = 0  # TRP III PDB
+    matrix[7][13] = 0  # TRP IV PDB
+    matrix[7][14] = 0  # TRP V PDB
+
     # TRP IV
     matrix[8][8] = trp_iv_all
     matrix[8][9] = trp_iv_v
     matrix[8][10] = 0  # TRP PDB
+    matrix[8][11] = 0  # TRP II PDB
+    matrix[8][12] = 0  # TRP III PDB
+    matrix[8][13] = 0  # TRP IV PDB
+    matrix[8][14] = 0  # TRP V PDB
+
     # TRP V
     matrix[9][9] = trp_v_all
     matrix[9][10] = 0  # TRP PDB
+    matrix[9][11] = 0  # TRP II PDB
+    matrix[9][12] = 0  # TRP III PDB
+    matrix[9][13] = 0  # TRP IV PDB
+    matrix[9][14] = 0  # TRP V PDB
 
     # TRP PDB
     matrix[10][10] = 0  # TRP PDB
+    matrix[10][11] = 0  # TRP II PDB
+    matrix[10][12] = 0  # TRP III PDB
+    matrix[10][13] = 0  # TRP IV PDB
+    matrix[10][14] = 0  # TRP V PDB
+
+    # TRP I PDB
+    matrix[11][11] = 0  # TRP II PDB
+    matrix[11][12] = 0  # TRP III PDB
+    matrix[11][13] = 0  # TRP IV PDB
+    matrix[11][14] = 0  # TRP V PDB
+
+    # TRP II PDB
+    matrix[12][12] = 0  # TRP III PDB
+    matrix[12][13] = 0  # TRP IV PDB
+    matrix[12][14] = 0  # TRP V PDB
+
+    # TRP III PDB
+    matrix[13][13] = 0  # TRP IV PDB
+    matrix[13][14] = 0  # TRP V PDB
+
+    # TRP IV PDB
+    matrix[14][14] = 0  # TRP V PDB
 
     # filling the lower triangle of the matrix (copying upper)
     for i in range(10):
         for j in range(i, 10):
             matrix[j][i] = matrix[i][j]
 
-    label = ['PDB all', 'PDB Human', 'UniProt all', 'UniProt Human', 'TRP UniProt', 'OMIM UniProt', 'TRP II', 'TRP III', 'TRP IV', 'TRP V', 'TRP PDB']
+    label = ['PDB all', 'PDB Human', 'UniProt all', 'UniProt Human', 'TRP UniProt', 'OMIM UniProt', 'TRP II', 'TRP III', 'TRP IV', 'TRP V', 'TRP PDB', 'TRP II PDB', 'TRP III PDB', 'TRP IV PDB', 'TRP V PDB']
     df_count_disease = pd.DataFrame(matrix, columns=label)
     df_count_disease.index = label
     print(df_count_disease)
